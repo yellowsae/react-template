@@ -8,8 +8,8 @@ import Layout from '@/components/Layout'
 // import Home from "@/pages/Home"
 // import About from "@/pages/About"
 
-const Home: React.LazyExoticComponent<() => JSX.Element> | any = lazy(() => import('@/pages/Home'))
-const About: React.LazyExoticComponent<() => JSX.Element> | any = lazy(() => import('@/pages/About'))
+const Home = lazy(() => import('@/pages/Home'))
+const About = lazy(() => import('@/pages/About'))
 
 const routes: RouteObject[] = [
   {

@@ -2,7 +2,7 @@ import { Button } from "antd"
 
 import useCounterStore from "@/stores/counter"
 
-const Home: React.FC = () => {
+const Home = () => {
 
   const counter = useCounterStore((state) => state.counter)
   const increase = useCounterStore((state) => state.increase)
