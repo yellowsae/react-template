@@ -1,8 +1,14 @@
 import { createBrowserRouter, Navigate } from 'react-router-dom'
 import type { RouteObject } from 'react-router-dom'
+import { lazy } from 'react'
+import lazyLoad from "./lazyLoad"
 
-import Home from "@/pages/Home"
-import About from "@/pages/About"
+
+// import Home from "@/pages/Home"
+// import About from "@/pages/About"
+
+const Home: React.LazyExoticComponent<() => JSX.Element> | any = lazy(() => import('@/pages/Home'))
+const About: React.LazyExoticComponent<() => JSX.Element> | any = lazy(() => import('@/pages/About'))
 
 const routes: RouteObject[] = [
   {
@@ -14,14 +20,16 @@ const routes: RouteObject[] = [
       },
       {
         path: 'home',
-        element: <Home />
+        element: lazyLoad(Home)
       },
       {
         path: 'about',
-        element: <About />
+        element: lazyLoad(About)
       }
     ]
   }
 ]
 
-export default createBrowserRouter(routes)
+export default createBrowserRouter(routes, {
+  basename: '/',
+})
