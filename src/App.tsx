@@ -1,11 +1,9 @@
+import { RouterProvider } from 'react-router-dom'
+import router from '@/router'
 
-
+// The Project use react-router-dom v6 in App.tsx
 const App = () => {
-  return (
-    <div>
-      <h1>App</h1>
-    </div>
-  )
+  return <RouterProvider router={router} />
 }
 
 export default App
