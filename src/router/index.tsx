@@ -1,23 +1,22 @@
-import { createBrowserRouter, Navigate, redirect } from 'react-router-dom'
+import { createBrowserRouter, Navigate } from 'react-router-dom'
 import type { RouteObject } from 'react-router-dom'
 import { lazy } from 'react'
 import lazyLoad from "./lazyLoad"
 
 import Layout from '@/components/Layout'
 
-import { userInfoStore } from '@/stores'
 
 import ErrorBoundary from '@/components/ErrorBoundary'
 
-const authLoader = () => {
-  const token = userInfoStore.getState().userInfo?.token
+// const authLoader = () => {
+//   const token = userInfoStore.getState().userInfo?.token
 
-  if (!token) {
-    return redirect(`/login?to=${window.location.pathname + window.location.search}`)
-  }
+//   if (!token) {
+//     return redirect(`/login?to=${window.location.pathname + window.location.search}`)
+//   }
 
-  return null
-}
+//   return null
+// }
 
 const routes: RouteObject[] = [
   {

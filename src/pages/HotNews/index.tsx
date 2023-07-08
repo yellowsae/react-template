@@ -36,7 +36,6 @@ const HotNews = () => {
 
       <List
         itemLayout="horizontal"
-        dataSource={hotNews || Array(10).fill('')}
         bordered
         style={{ marginTop: '16px', flex: 1, overflow: 'auto' }}
         renderItem={(item: any) => (
