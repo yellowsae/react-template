@@ -13,7 +13,7 @@ export default defineConfig({
   server: {
     proxy: {
       '/new': {
-        target: 'http://www.ggapi.cn/api',
+        target: 'https://autumnfish.cn/api/joke/list?num=10&pag',
         changeOrigin: true,
       }
     }

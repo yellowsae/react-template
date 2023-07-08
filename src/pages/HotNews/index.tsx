@@ -16,7 +16,9 @@ const NAVS = [
 const HotNews = () => {
   const [active, setActive] = useState(NAVS[0].id)
 
-  const { hotNews, isValidating } = useFetchHotNews(active)
+  const { hotNews, isValidating } = useFetchHotNews()
+
+  console.log(hotNews, 'hotNews')
 
   return (
     <div style={{ height: '100%', display: 'flex', flexDirection: 'column' }}>

@@ -1,21 +1,34 @@
-import { createBrowserRouter, Navigate } from 'react-router-dom'
+import { createBrowserRouter, Navigate, redirect } from 'react-router-dom'
 import type { RouteObject } from 'react-router-dom'
 import { lazy } from 'react'
 import lazyLoad from "./lazyLoad"
 
 import Layout from '@/components/Layout'
 
-// import Home from "@/pages/Home"
-// import About from "@/pages/About"
+import { userInfoStore } from '@/stores'
 
-const Home = lazy(() => import('@/pages/Home'))
-const About = lazy(() => import('@/pages/About'))
-const HotNews = lazy(() => import('@/pages/HotNews'))
+import ErrorBoundary from '@/components/ErrorBoundary'
+
+const authLoader = () => {
+  const token = userInfoStore.getState().userInfo?.token
+
+  if (!token) {
+    return redirect(`/login?to=${window.location.pathname + window.location.search}`)
+  }
+
+  return null
+}
 
 const routes: RouteObject[] = [
   {
+    path: 'login',
+    element: lazyLoad(lazy(() => import('@/pages/Login')))
+  },
+  {
     path: '/',
     element: <Layout />,
+    // loader: authLoader,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         index: true,
@@ -23,15 +36,15 @@ const routes: RouteObject[] = [
       },
       {
         path: 'home',
-        element: lazyLoad(Home)
+        element: lazyLoad(lazy(() => import('@/pages/Home')))
       },
       {
         path: 'about',
-        element: lazyLoad(About)
+        element: lazyLoad(lazy(() => import('@/pages/About')))
       },
       {
         path: 'hotNews',
-        element: lazyLoad(HotNews)
+        element: lazyLoad(lazy(() => import('@/pages/HotNews')))
       }
     ]
   }
