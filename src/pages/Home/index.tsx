@@ -1,3 +1,4 @@
+import { Button } from "antd"
 
 import useCounterStore from "@/stores/counter"
 
@@ -9,9 +10,9 @@ const Home: React.FC = () => {
   return (
     <div>
       <h1> Home Page </h1>
-      <button onClick={() => increase(1)}>
+      <Button type="primary" onClick={() => increase(1)}>
         counter: {counter}
-      </button>
+      </Button>
     </div>
   )
 }

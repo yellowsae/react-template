@@ -3,6 +3,7 @@ import type { RouteObject } from 'react-router-dom'
 import { lazy } from 'react'
 import lazyLoad from "./lazyLoad"
 
+import Layout from '@/components/Layout'
 
 // import Home from "@/pages/Home"
 // import About from "@/pages/About"
@@ -13,6 +14,7 @@ const About: React.LazyExoticComponent<() => JSX.Element> | any = lazy(() => imp
 const routes: RouteObject[] = [
   {
     path: '/',
+    element: <Layout />,
     children: [
       {
         index: true,
