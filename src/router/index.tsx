@@ -10,6 +10,7 @@ import Layout from '@/components/Layout'
 
 const Home = lazy(() => import('@/pages/Home'))
 const About = lazy(() => import('@/pages/About'))
+const HotNews = lazy(() => import('@/pages/HotNews'))
 
 const routes: RouteObject[] = [
   {
@@ -27,11 +28,15 @@ const routes: RouteObject[] = [
       {
         path: 'about',
         element: lazyLoad(About)
+      },
+      {
+        path: 'hotNews',
+        element: lazyLoad(HotNews)
       }
     ]
   }
 ]
 
 export default createBrowserRouter(routes, {
-  basename: '/',
+  basename: import.meta.env.VITE_BASE_URL,
 })
